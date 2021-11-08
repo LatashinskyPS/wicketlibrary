@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add author</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<form wicket:id="form">
+    <div class="mb-3">
+        <label for="nameInput">Enter name:</label><br/>
+        <input wicket:id="name" id="nameInput" type="text" size="40" placeholder="Author name"/><br/>
+        <label for="surnameInput">Enter surname:</label><br/>
+        <input wicket:id="surname" id="surnameInput" type="text" size="40" placeholder="Author surname"/><br/>
+        <label for="dateBornInput">Enter date of born:</label><br/>
+        <input wicket:id="dateBorn" id="dateBornInput" type="text" size="40"
+               placeholder="Date of born(dd/mm/yyyy)"/><br/>
+        <label for="dateDeathInput">Enter date of death(empty if alive):</label><br/>
+        <input wicket:id="dateDeath" id="dateDeathInput" type="text" size="40" placeholder="Date of death(dd/mm/yyyy)"/><br/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="button" class="btn btn-secondary" wicket:id="return">Cancel</button>
+</form>
+<div id="feedbackPanel" class="alert alert-primary" role="alert">
+    <span wicket:id="feedback"></span>
+</div>
+</body>
+</html>

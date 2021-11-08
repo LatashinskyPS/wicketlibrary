@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  postgers-db:
+    container_name: library-db
+    image: postgres:14.0
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: pavel
+      POSTGRES_USER: pavel
+      POSTGRES_DB: library
