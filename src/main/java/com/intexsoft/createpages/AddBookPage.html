@@ -7,30 +7,32 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<form wicket:id="form">
-    <div class="mb-3">
-        <label for="nameInput">Enter name:</label><br/>
-        <input wicket:id="name" id="nameInput" type="text" size="40"
-                                              placeholder="Book name"/><br/>
-        <label for="descriptionInput">Enter description:</label><br/>
-        <input wicket:id="description" id="descriptionInput" type="text" size="40"
-               placeholder="Book description(not required)"/><br/>
-    </div>
-    <label for="publisherDropDown">Select publisher:</label><br/>
-    <select wicket:id="publisher" class="form-select" id="publisherDropDown">
-    </select>
-    <label for="check">Select authors:</label><br/>
-    <div class="form-check" wicket:id="authors">
+<div class="container-fluid">
+    <form wicket:id="form">
+        <div class="mb-3">
+            <label for="nameInput">Enter name:</label><br/>
+            <input wicket:id="name" id="nameInput" type="text" size="40"
+                   placeholder="Book name"/><br/>
+            <label for="descriptionInput">Enter description:</label><br/>
+            <input wicket:id="description" id="descriptionInput" type="text" size="40"
+                   placeholder="Book description(not required)"/><br/>
+        </div>
+        <label for="publisherDropDown">Select publisher:</label><br/>
+        <select wicket:id="publisher" class="form-select" id="publisherDropDown">
+        </select>
+        <label for="check">Select authors:</label><br/>
+        <div class="form-check" wicket:id="authors">
         <span wicket:id="authorsForCheck">
         <input type="checkbox" wicket:id="check" id="check"/>
         <label wicket:id="author12" style="display:inline;"></label><br/>
         </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" wicket:id="return">Cancel</button>
+    </form>
+    <div id="feedbackPanel" class="alert alert-primary" role="alert">
+        <span wicket:id="feedback"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
-    <button type="button" class="btn btn-secondary" wicket:id="return">Cancel</button>
-</form>
-<div id="feedbackPanel" class="alert alert-primary" role="alert">
-    <span wicket:id="feedback"></span>
 </div>
 </body>
 </html>
