@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:wicket="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:wicket="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Add book</title>
@@ -9,7 +9,9 @@
 <body>
 <form wicket:id="form">
     <div class="mb-3">
-        <input wicket:id="name" id="nameInput" type="text" size="40" placeholder="Book name"/><br/>
+        <label for="nameInput">Enter name:</label><br/>
+        <input wicket:id="name" id="nameInput" type="text" size="40"
+                                              placeholder="Book name"/><br/>
         <label for="descriptionInput">Enter description:</label><br/>
         <input wicket:id="description" id="descriptionInput" type="text" size="40"
                placeholder="Book description(not required)"/><br/>
@@ -17,9 +19,12 @@
     <label for="publisherDropDown">Select publisher:</label><br/>
     <select wicket:id="publisher" class="form-select" id="publisherDropDown">
     </select>
-    <div class="form-check">
-        <label for="check">Select authors</label>
-        <input wicket:id="authors" class="form-check-input" type="" value="" id="check">
+    <label for="check">Select authors:</label><br/>
+    <div class="form-check" wicket:id="authors">
+        <span wicket:id="authorsForCheck">
+        <input type="checkbox" wicket:id="check" id="check"/>
+        <label wicket:id="author12" style="display:inline;"></label><br/>
+        </span>
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
     <button type="button" class="btn btn-secondary" wicket:id="return">Cancel</button>
