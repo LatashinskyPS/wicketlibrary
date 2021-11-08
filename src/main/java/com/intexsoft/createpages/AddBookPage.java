@@ -42,7 +42,8 @@ public class AddBookPage extends WebPage {
             @Override
             protected void populateItem(ListItem<Author> item) {
                 Check<Author> check = new Check<>("check", item.getModel());
-                check.setLabel(new Model<>(item.getModel().getObject().getName()));
+                Author author =item.getModelObject();
+                check.setLabel(new Model<>(String.format("%s %s",author.getName(), author.getSurname())));
                 item.add(check);
                 item.add(new SimpleFormComponentLabel("author12", check));
             }
