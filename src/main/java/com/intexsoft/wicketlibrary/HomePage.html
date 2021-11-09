@@ -9,7 +9,7 @@
 <body>
 <div class="container-fluid">
     <div class="row gx-5">
-        <div class="col">
+        <div class="col text-center">
             <div class="p-3 bg-white">
                 <br/>
                 <button type="submit" class="btn btn-primary" wicket:id="addAuthorButton">Add new author</button>
@@ -18,27 +18,36 @@
             </div>
         </div>
     </div>
-</div>
-<nav aria-label="Page navigation example">
-    <div class="row ui-corner-left">
-        <div class="col col-md-auto" wicket:id="pagingNavigator">
-            <ul class="pagination" wicket:id="pageLink">
-                <li class="page-item">
-                    <a class="page-link">
-                        <span wicket:id="pageNumber"></span>
-                    </a>
-                </li>
-            </ul>
+    <hr/>
+    <div class="container">
+        <nav aria-label="Page navigation example">
+            <div class="row ui-corner-left">
+                <div class="col col-md-auto">
+                    <ul class="pagination">
+                        <li wicket:id="first" class="page-link">&lt;&lt;</li>
+                        <li wicket:id="prev" class="page-link">&lt;</li>
+                    </ul>
+                    <ul wicket:id="pagingNavigation" class="pagination">
+                        <a wicket:id="pageLink" class="page-link" ><span wicket:id="pageNumber">5</span></a>
+                    </ul>
+                    <ul class="pagination">
+                        <li wicket:id="next" class="page-link">&gt;</li>
+                        <li wicket:id="last" class="page-link">&gt;&gt;</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col border">Book name</div>
+            <div class="col border">Buttons</div>
+        </div>
+        <div class="row" wicket:id="rows">
+            <div class="col border" wicket:id="dataRow"></div>
+            <div class="col border">
+                <button type="submit" class="btn btn-primary" wicket:id="button">Show book</button>
+            </div>
         </div>
     </div>
-</nav>
-<table>
-    <tr>
-        <th>link</th>
-    </tr>
-    <tr wicket:id="rows">
-        <td wicket:id="dataRow"></td>
-    </tr>
-</table>
+</div>
 </body>
 </html>

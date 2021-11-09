@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+import java.util.UUID;
 
 public class BookRepository {
     private static final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
@@ -18,7 +19,16 @@ public class BookRepository {
         return bookRepository;
     }
 
-    public void save(Book book){
+    public Book findById(UUID uuid) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Book book = session.get(Book.class, uuid);
+        session.getTransaction().commit();
+        session.close();
+        return book;
+    }
+
+    public void save(Book book) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         if (book.getId() != null) {
@@ -34,7 +44,7 @@ public class BookRepository {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         @SuppressWarnings("unchecked")
-        List<Book> publisherList = session.createQuery("from Book ").getResultList();
+        List<Book> publisherList = session.createQuery("from Book order by name").getResultList();
         session.getTransaction().commit();
         session.close();
         return publisherList;
