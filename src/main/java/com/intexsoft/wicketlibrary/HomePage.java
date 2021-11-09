@@ -65,7 +65,7 @@ public class HomePage extends WebPage {
                 });
             }
         };
-        dataView.setItemsPerPage(1);
+        dataView.setItemsPerPage(5);
 
         add(dataView);
         PagingNavigation pagingNavigation = new PagingNavigation("pagingNavigation", dataView);

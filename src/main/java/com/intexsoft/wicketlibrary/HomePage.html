@@ -21,15 +21,20 @@
     <hr/>
     <div class="container">
         <nav aria-label="Page navigation example">
-            <div class="row ui-corner-left">
+            <div class="row justify-content-md-center">
                 <div class="col col-md-auto">
                     <ul class="pagination">
                         <li wicket:id="first" class="page-link">&lt;&lt;</li>
                         <li wicket:id="prev" class="page-link">&lt;</li>
                     </ul>
-                    <ul wicket:id="pagingNavigation" class="pagination">
-                        <a wicket:id="pageLink" class="page-link" ><span wicket:id="pageNumber">5</span></a>
+                </div>
+                <div wicket:id="pagingNavigation" class="col col-md-auto">
+                    <ul wicket:id="pageLink" class="pagination">
+                        <li wicket:id="pageNumber" class="page-link">5</li>
                     </ul>
+                </div>
+                <div class="col col-md-auto">
+
                     <ul class="pagination">
                         <li wicket:id="next" class="page-link">&gt;</li>
                         <li wicket:id="last" class="page-link">&gt;&gt;</li>
