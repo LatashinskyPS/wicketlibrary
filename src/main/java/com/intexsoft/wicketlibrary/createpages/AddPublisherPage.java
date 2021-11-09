@@ -1,9 +1,9 @@
-package com.intexsoft.createpages;
+package com.intexsoft.wicketlibrary.createpages;
 
-import com.intexsoft.HomePage;
-import com.intexsoft.entities.Publisher;
-import com.intexsoft.repositories.PublisherRepository;
-import com.intexsoft.validators.CustomNumberValidator;
+import com.intexsoft.wicketlibrary.HomePage;
+import com.intexsoft.wicketlibrary.entities.Publisher;
+import com.intexsoft.wicketlibrary.repositories.PublisherRepository;
+import com.intexsoft.wicketlibrary.validators.CustomNumberValidator;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;

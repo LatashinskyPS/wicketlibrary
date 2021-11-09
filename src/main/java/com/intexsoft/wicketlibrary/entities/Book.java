@@ -1,4 +1,4 @@
-package com.intexsoft.entities;
+package com.intexsoft.wicketlibrary.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;

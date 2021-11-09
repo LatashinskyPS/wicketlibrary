@@ -1,8 +1,8 @@
-package com.intexsoft;
+package com.intexsoft.wicketlibrary;
 
-import com.intexsoft.entities.Author;
-import com.intexsoft.entities.Book;
-import com.intexsoft.entities.Publisher;
+import com.intexsoft.wicketlibrary.entities.Author;
+import com.intexsoft.wicketlibrary.entities.Book;
+import com.intexsoft.wicketlibrary.entities.Publisher;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

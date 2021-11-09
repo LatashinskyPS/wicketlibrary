@@ -1,4 +1,4 @@
-package com.intexsoft;
+package com.intexsoft.wicketlibrary;
 
 import org.apache.wicket.protocol.http.WebApplication;
 

@@ -1,4 +1,4 @@
-package com.intexsoft.validators;
+package com.intexsoft.wicketlibrary.validators;
 
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.ValidationError;

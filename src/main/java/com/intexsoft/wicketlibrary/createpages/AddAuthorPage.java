@@ -1,11 +1,9 @@
-package com.intexsoft.createpages;
+package com.intexsoft.wicketlibrary.createpages;
 
-import com.intexsoft.HomePage;
-import com.intexsoft.entities.Author;
-import com.intexsoft.repositories.AuthorRepository;
-import org.apache.wicket.event.IEvent;
+import com.intexsoft.wicketlibrary.HomePage;
+import com.intexsoft.wicketlibrary.entities.Author;
+import com.intexsoft.wicketlibrary.repositories.AuthorRepository;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextField;

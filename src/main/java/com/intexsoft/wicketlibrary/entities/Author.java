@@ -1,4 +1,4 @@
-package com.intexsoft.entities;
+package com.intexsoft.wicketlibrary.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -29,6 +31,28 @@ public class Author implements Serializable {
 
     @Column(name = "date_death")
     private Date dateDeath;
+
+    @OneToMany
+    @JoinTable(
+            name = "author_to_book",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private List<Book> books;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(id, author.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
 
     public UUID getId() {
         return id;
@@ -68,5 +92,13 @@ public class Author implements Serializable {
 
     public void setDateDeath(Date dateDeath) {
         this.dateDeath = dateDeath;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

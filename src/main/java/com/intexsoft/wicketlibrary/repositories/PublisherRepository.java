@@ -1,7 +1,7 @@
-package com.intexsoft.repositories;
+package com.intexsoft.wicketlibrary.repositories;
 
-import com.intexsoft.HibernateSessionFactory;
-import com.intexsoft.entities.Publisher;
+import com.intexsoft.wicketlibrary.HibernateSessionFactory;
+import com.intexsoft.wicketlibrary.entities.Publisher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

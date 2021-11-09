@@ -1,9 +1,11 @@
-package com.intexsoft.repositories;
+package com.intexsoft.wicketlibrary.repositories;
 
-import com.intexsoft.HibernateSessionFactory;
-import com.intexsoft.entities.Book;
+import com.intexsoft.wicketlibrary.HibernateSessionFactory;
+import com.intexsoft.wicketlibrary.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 public class BookRepository {
     private static final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
@@ -26,6 +28,16 @@ public class BookRepository {
         }
         session.getTransaction().commit();
         session.close();
+    }
+
+    public List<Book> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        @SuppressWarnings("unchecked")
+        List<Book> publisherList = session.createQuery("from Book ").getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return publisherList;
     }
 }
 

@@ -1,12 +1,12 @@
-package com.intexsoft.createpages;
+package com.intexsoft.wicketlibrary.createpages;
 
-import com.intexsoft.HomePage;
-import com.intexsoft.entities.Author;
-import com.intexsoft.entities.Book;
-import com.intexsoft.entities.Publisher;
-import com.intexsoft.repositories.AuthorRepository;
-import com.intexsoft.repositories.BookRepository;
-import com.intexsoft.repositories.PublisherRepository;
+import com.intexsoft.wicketlibrary.HomePage;
+import com.intexsoft.wicketlibrary.entities.Author;
+import com.intexsoft.wicketlibrary.entities.Book;
+import com.intexsoft.wicketlibrary.entities.Publisher;
+import com.intexsoft.wicketlibrary.repositories.AuthorRepository;
+import com.intexsoft.wicketlibrary.repositories.BookRepository;
+import com.intexsoft.wicketlibrary.repositories.PublisherRepository;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.link.Link;
@@ -45,7 +45,7 @@ public class AddBookPage extends WebPage {
                 Author author =item.getModelObject();
                 check.setLabel(new Model<>(String.format("%s %s",author.getName(), author.getSurname())));
                 item.add(check);
-                item.add(new SimpleFormComponentLabel("author12", check));
+                item.add(new SimpleFormComponentLabel("authorName", check));
             }
         }.setReuseItems(true);
         authorCheckGroup.add(checksList);
