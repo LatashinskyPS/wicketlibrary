@@ -2,10 +2,12 @@ package com.intexsoft.wicketlibrary.repositories;
 
 import com.intexsoft.wicketlibrary.HibernateSessionFactory;
 import com.intexsoft.wicketlibrary.entities.Author;
+import com.intexsoft.wicketlibrary.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AuthorRepository {
     private static final AuthorRepository authorRepository = new AuthorRepository();
@@ -39,5 +41,16 @@ public class AuthorRepository {
         session.getTransaction().commit();
         session.close();
         return publisherList;
+    }
+
+    public List<Author> getByBook(Book book) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.refresh(book);
+        List<Author> authorList = book.getAuthorList()
+                .stream().distinct().collect(Collectors.toList());
+        session.getTransaction().commit();
+        session.close();
+        return authorList;
     }
 }

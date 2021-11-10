@@ -17,6 +17,7 @@ public class BookForm extends Form<Book> {
 
     public BookForm(String id, Book book) {
         super(id, new CompoundPropertyModel<>(book));
+        book.setAuthorList(AuthorRepository.getInstance().getByBook(book));
         if (book.getAuthorList() == null) {
             book.setAuthorList(new ArrayList<>());
         }

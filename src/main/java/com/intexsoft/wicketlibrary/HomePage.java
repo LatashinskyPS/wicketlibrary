@@ -4,7 +4,9 @@ import com.intexsoft.wicketlibrary.bookinfo.BookInfoPage;
 import com.intexsoft.wicketlibrary.createpages.AddAuthorPage;
 import com.intexsoft.wicketlibrary.createpages.AddBookPage;
 import com.intexsoft.wicketlibrary.createpages.AddPublisherPage;
+import com.intexsoft.wicketlibrary.entities.Author;
 import com.intexsoft.wicketlibrary.entities.Book;
+import com.intexsoft.wicketlibrary.repositories.AuthorRepository;
 import com.intexsoft.wicketlibrary.repositories.BookRepository;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -49,7 +51,6 @@ public class HomePage extends WebPage {
 
         List<Book> books = BookRepository.getInstance().getAll();
         ListDataProvider<Book> listDataProvider = new ListDataProvider<>(books);
-
         DataView<Book> dataView = new DataView<>("rows", listDataProvider) {
             @Override
             protected void populateItem(Item<Book> item) {
@@ -65,7 +66,7 @@ public class HomePage extends WebPage {
                 });
             }
         };
-        dataView.setItemsPerPage(5);
+        dataView.setItemsPerPage(1);
 
         add(dataView);
         PagingNavigation pagingNavigation = new PagingNavigation("pagingNavigation", dataView);

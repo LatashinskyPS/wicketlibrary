@@ -25,7 +25,7 @@ public class Book implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     @JoinTable(
             name = "author_to_book",
             joinColumns = @JoinColumn(name = "book_id"),
