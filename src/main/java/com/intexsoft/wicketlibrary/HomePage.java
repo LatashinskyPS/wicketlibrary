@@ -4,9 +4,7 @@ import com.intexsoft.wicketlibrary.bookinfo.BookInfoPage;
 import com.intexsoft.wicketlibrary.createpages.AddAuthorPage;
 import com.intexsoft.wicketlibrary.createpages.AddBookPage;
 import com.intexsoft.wicketlibrary.createpages.AddPublisherPage;
-import com.intexsoft.wicketlibrary.entities.Author;
 import com.intexsoft.wicketlibrary.entities.Book;
-import com.intexsoft.wicketlibrary.repositories.AuthorRepository;
 import com.intexsoft.wicketlibrary.repositories.BookRepository;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -14,7 +12,6 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigationIncrementLink;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigationLink;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -66,7 +63,7 @@ public class HomePage extends WebPage {
                 });
             }
         };
-        dataView.setItemsPerPage(1);
+        dataView.setItemsPerPage(5);
 
         add(dataView);
         PagingNavigation pagingNavigation = new PagingNavigation("pagingNavigation", dataView);
