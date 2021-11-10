@@ -49,5 +49,14 @@ public class BookRepository {
         session.close();
         return publisherList;
     }
+
+    public void deleteBook(Book book) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.refresh(book);
+        session.delete(book);
+        session.getTransaction().commit();
+        session.close();
+    }
 }
 
