@@ -9,17 +9,20 @@
 <body>
 <div class="container-fluid">
     <button type="button" class="btn btn-secondary" wicket:id="return">Cancel</button>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col border text-center">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col" width="750">
                 <h4>Edit book</h4>
-            </div>
-            <div class="col border text-center">
+            </th>
+            <th scope="col">
                 <h4>Book info</h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col border">
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="col">
                 <form wicket:id="form">
                     <div class="row">
                         <div class="mb-3">
@@ -45,12 +48,14 @@
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </div>
                 </form>
-            </div>
-            <div class="col border">
-                <div wicket:id="book"></div>
-            </div>
-        </div>
-    </div>
+            </th>
+            <th scope="col">
+                <div>Name:<span wicket:id="name"></span></div>
+                <div>Description:<span wicket:id="description"></span></div>
+            </th>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

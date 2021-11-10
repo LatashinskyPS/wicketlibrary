@@ -8,7 +8,6 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 public class BookInfoPage extends WebPage {
@@ -26,7 +25,8 @@ public class BookInfoPage extends WebPage {
                 BookRepository.getInstance().save(getModelObject());
             }
         };
-        add(new Label("book", new Model<>(book)));
+        add(new Label("name", new PropertyModel<>(book,"name")));
+        add(new Label("description", new PropertyModel<>(book,"description")));
         add(bookForm);
     }
 }

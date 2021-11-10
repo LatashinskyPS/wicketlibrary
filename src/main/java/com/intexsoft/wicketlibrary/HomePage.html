@@ -23,36 +23,37 @@
         <nav aria-label="Page navigation example">
             <div class="row justify-content-md-center">
                 <div class="col col-md-auto">
-                    <ul class="pagination">
-                        <li wicket:id="first" class="page-link">&lt;&lt;</li>
-                        <li wicket:id="prev" class="page-link">&lt;</li>
-                    </ul>
-                </div>
-                <div wicket:id="pagingNavigation" class="col col-md-auto">
-                    <ul wicket:id="pageLink" class="pagination">
-                        <li wicket:id="pageNumber" class="page-link">5</li>
-                    </ul>
-                </div>
-                <div class="col col-md-auto">
-
-                    <ul class="pagination">
-                        <li wicket:id="next" class="page-link">&gt;</li>
-                        <li wicket:id="last" class="page-link">&gt;&gt;</li>
-                    </ul>
+                    <div class="pagination">
+                        <div wicket:id="first" class="page-link">&lt;&lt;</div>
+                        <div wicket:id="prev" class="page-link">&lt;</div>
+                        <span wicket:id="pagingNavigation">
+                            <span wicket:id="pageLink">
+                                <span wicket:id="pageNumber" class="page-link"></span>
+                            </span>
+                        </span>
+                        <div wicket:id="next" class="page-link">&gt;</div>
+                        <div wicket:id="last" class="page-link">&gt;&gt;</div>
+                    </div>
                 </div>
             </div>
         </nav>
-        <div class="row">
-            <div class="col border">Book name</div>
-            <div class="col border">Buttons</div>
-        </div>
-        <div class="row" wicket:id="rows">
-            <div class="col border" wicket:id="dataRow"></div>
-            <div class="col border">
-                <button type="button" class="btn btn-primary" wicket:id="showButton">Show book</button>
-                <button type="button" class="btn btn-danger" wicket:id="deleteButton">Delete book</button>
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Book name</th>
+                <th scope="col">Buttons</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr wicket:id="rows">
+                <th scope="col" wicket:id="dataRow"></th>
+                <th>
+                    <button type="button" class="btn btn-primary" wicket:id="showButton">Show book</button>
+                    <button type="button" class="btn btn-danger" wicket:id="deleteButton">Delete book</button>
+                </th>
+            </tr>
+            </tbody>
+        </table>
         <div class="row">
             <button type="button" class="btn bg-secondary" wicket:id="update">Update</button>
         </div>

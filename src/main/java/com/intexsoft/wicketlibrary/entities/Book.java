@@ -37,17 +37,6 @@ public class Book implements Serializable {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", authors=" + authors +
-                ", publisher=" + publisher +
-                '}';
-    }
-
     public UUID getId() {
         return id;
     }
