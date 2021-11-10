@@ -6,6 +6,7 @@ import com.intexsoft.wicketlibrary.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,9 +47,12 @@ public class AuthorRepository {
     public List<Author> getByBook(Book book) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.refresh(book);
-        List<Author> authorList = book.getAuthorList()
-                .stream().distinct().collect(Collectors.toList());
+        List<Author> authorList = new ArrayList<>();
+        if (book.getId() != null) {
+            session.refresh(book);
+            authorList = book.getAuthorList()
+                    .stream().distinct().collect(Collectors.toList());
+        }
         session.getTransaction().commit();
         session.close();
         return authorList;
