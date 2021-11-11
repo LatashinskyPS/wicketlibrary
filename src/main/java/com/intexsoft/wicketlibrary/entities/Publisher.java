@@ -40,6 +40,13 @@ public class Publisher implements Serializable {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return '\"' + name + '\"' +
+                ", address: " + address +
+                ", number: " + number;
+    }
+
     public UUID getId() {
         return id;
     }

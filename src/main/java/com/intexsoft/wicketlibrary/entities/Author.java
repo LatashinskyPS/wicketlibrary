@@ -53,6 +53,10 @@ public class Author implements Serializable {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 
     public UUID getId() {
         return id;
