@@ -17,10 +17,6 @@
     <properties>
         <wicket.version>1.5.16</wicket.version>
         <jetty.version>7.5.0.v20110901</jetty.version>
-        <datasource.driverClassName>org.postgresql.Driver</datasource.driverClassName>
-        <datasource.url>jdbc:postgresql://localhost:5432/library</datasource.url>
-        <datasource.username>pavel</datasource.username>
-        <datasource.password>pavel</datasource.password>
     </properties>
     <dependencies>
         <!--  WICKET DEPENDENCIES -->
@@ -155,11 +151,8 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
+                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                     <changeLogFile>src/main/resources/changelog.xml</changeLogFile>
-                    <driver>${datasource.driverClassName}</driver>
-                    <url>${datasource.url}</url>
-                    <username>${datasource.username}</username>
-                    <password>${datasource.password}</password>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                 </configuration>
                 <dependencies>
