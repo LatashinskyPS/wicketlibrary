@@ -9,9 +9,6 @@ create table author
     surname    varchar(255) not null
 );
 
-alter table author
-    owner to pavel;
-
 create table publisher
 (
     id      uuid         not null
@@ -21,9 +18,6 @@ create table publisher
     name    varchar(255) not null,
     number  varchar(255) not null
 );
-
-alter table publisher
-    owner to pavel;
 
 create table book
 (
@@ -37,9 +31,6 @@ create table book
             references publisher
 );
 
-alter table book
-    owner to pavel;
-
 create table author_to_book
 (
     book_id   uuid not null
@@ -49,7 +40,4 @@ create table author_to_book
         constraint fk2xxuj4m0iu8qv9jux3xnm3etd
             references author
 );
-
-alter table author_to_book
-    owner to pavel;
 

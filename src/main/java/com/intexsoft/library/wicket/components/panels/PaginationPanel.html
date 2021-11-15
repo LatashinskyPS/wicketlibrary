@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<wicket:panel>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" wicket:id="prev">
+                <a class="page-link" aria-label="Previous" href="#">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li wicket:id="pagingNavigation">
+                <a wicket:id="pageLink" class="page-link" href="#">
+                    <span wicket:id="pageNumber" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li class="page-item" wicket:id="next">
+                <a class="page-link" aria-label="Previous" href="#">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</wicket:panel>
+</body>
+</html>
