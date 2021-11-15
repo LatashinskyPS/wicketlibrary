@@ -21,11 +21,21 @@
     </properties>
     <dependencies>
         <!--  WICKET DEPENDENCIES -->
+        <!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket-extensions -->
         <dependency>
             <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-core</artifactId>
+            <artifactId>wicket-extensions</artifactId>
             <version>${wicket.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket -->
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket</artifactId>
+            <version>${wicket.version}</version>
+            <type>pom</type>
+        </dependency>
+
         <!-- OPTIONAL DEPENDENCY
         <dependency>
             <groupId>org.apache.wicket</groupId>

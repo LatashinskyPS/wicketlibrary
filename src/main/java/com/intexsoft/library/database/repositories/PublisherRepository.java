@@ -50,4 +50,13 @@ public class PublisherRepository {
         session.close();
         return publisher;
     }
+
+    public void delete(Publisher publisher) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.refresh(publisher);
+        session.delete(publisher);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

@@ -5,7 +5,7 @@
 https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
-    <changeSet author="postgres" id="V1_init">
+    <changeSet author="pavel.lotashinsky" id="V1_init">
         <sqlFile path="db/V1_init.sql" stripComments="false"/>
         <rollback>
             <sqlFile path="db/V1_init_rollback.sql" stripComments="false"/>

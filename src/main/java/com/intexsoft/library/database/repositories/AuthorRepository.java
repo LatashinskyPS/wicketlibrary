@@ -68,4 +68,12 @@ public class AuthorRepository {
         session.close();
         return author;
     }
+    public void delete(Author author) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.refresh(author);
+        session.delete(author);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

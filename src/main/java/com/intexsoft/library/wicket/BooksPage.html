@@ -8,6 +8,7 @@
 </head>
 <body>
 <span wicket:id="navbar"></span>
+<button wicket:id="createBookButton" type="button" class="btn btn-primary"> Check</button>
 <div class="container-fluid">
     <div class="container">
         <table class="table">
@@ -21,6 +22,7 @@
             <tr wicket:id="rows">
                 <th scope="col" wicket:id="dataRow"></th>
                 <th>
+                    <div wicket:id="confirm"></div>
                     <button type="button" class="btn btn-primary" wicket:id="showButton">Show book</button>
                     <button type="button" class="btn btn-danger" wicket:id="deleteButton">Delete book</button>
                 </th>
@@ -33,5 +35,14 @@
         </div>
     </div>
 </div>
+<footer class="text-muted">
+    <div class="container">
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>Library example. All Rights Reserved </p>
+        <p>©Pavel.Lotashinsky</p>
+    </div>
+</footer>
 </body>
 </html>

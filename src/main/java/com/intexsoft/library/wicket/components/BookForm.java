@@ -39,6 +39,7 @@ public class BookForm extends Form<Book> {
                 item.add(new SimpleFormComponentLabel("authorName", check));
             }
         }.setReuseItems(true);
+        authorCheckGroup.setRequired(true);
         authorCheckGroup.add(checksList);
         add(authorCheckGroup);
 

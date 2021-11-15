@@ -1,17 +1,19 @@
 package com.intexsoft.library.wicket.confirms;
 
 import com.intexsoft.library.database.entities.Book;
+import com.intexsoft.library.database.entities.Publisher;
 import com.intexsoft.library.database.repositories.BookRepository;
+import com.intexsoft.library.database.repositories.PublisherRepository;
 import com.intexsoft.library.wicket.BooksPage;
+import com.intexsoft.library.wicket.PublishersPage;
 import org.apache.wicket.PageReference;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.WebPage;
 
-public class ConfirmDeleteBookPage extends WebPage {
-
-    public ConfirmDeleteBookPage(final PageReference pageReference, ModalWindow modalWindow, Book book) {
+public class ConfirmDeletePublisherPage extends WebPage {
+    public ConfirmDeletePublisherPage(final PageReference pageReference, ModalWindow modalWindow, Publisher publisher) {
         add(new AjaxLink<>("close") {
             @Override
             public void onClick(AjaxRequestTarget target) {
@@ -22,7 +24,7 @@ public class ConfirmDeleteBookPage extends WebPage {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 if (pageReference != null) {
-                    BookRepository.getInstance().delete(book);
+                    PublisherRepository.getInstance().delete(publisher);
                 }
                 modalWindow.close(target);
             }

@@ -1,5 +1,6 @@
 package com.intexsoft.library.wicket.components;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -44,5 +45,5 @@ public abstract class AbstractLibraryDataView<T> extends DataView<T> {
         item.add(linkForEachItem(item));
     }
 
-    protected abstract Link<?> linkForEachItem(Item<T> item);
+    protected abstract Component linkForEachItem(Item<T> item);
 }

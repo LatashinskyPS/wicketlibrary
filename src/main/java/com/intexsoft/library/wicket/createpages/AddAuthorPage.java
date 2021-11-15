@@ -15,7 +15,6 @@ public class AddAuthorPage extends WebPage {
 
     public AddAuthorPage() {
         FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
-        add(feedbackPanel);
         Form<Author> form = new AuthorForm("form", new Author()) {
             @Override
             protected void onSubmit() {
@@ -23,6 +22,7 @@ public class AddAuthorPage extends WebPage {
                 redirectToInterceptPage(new BooksPage());
             }
         };
+        form.add(feedbackPanel);
         form.add(new Link<>("return") {
             @Override
             public void onClick() {

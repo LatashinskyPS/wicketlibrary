@@ -1,6 +1,7 @@
 package com.intexsoft.library;
 
 import org.apache.wicket.Page;
+import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.SpringWebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;

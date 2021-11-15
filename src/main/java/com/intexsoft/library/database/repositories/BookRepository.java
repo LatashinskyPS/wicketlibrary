@@ -14,7 +14,7 @@ public class BookRepository {
     private static final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
     private static final BookRepository bookRepository = new BookRepository();
 
-    private BookRepository() {
+    public BookRepository() {
     }
 
     public static BookRepository getInstance() {
@@ -52,7 +52,7 @@ public class BookRepository {
         return publisherList;
     }
 
-    public void deleteBook(Book book) {
+    public void delete(Book book) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         session.refresh(book);
