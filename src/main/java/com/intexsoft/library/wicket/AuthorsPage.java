@@ -1,12 +1,11 @@
 package com.intexsoft.library.wicket;
 
 import com.intexsoft.library.database.entities.Author;
-import com.intexsoft.library.database.entities.Book;
 import com.intexsoft.library.database.repositories.AuthorRepository;
-import com.intexsoft.library.database.repositories.BookRepository;
 import com.intexsoft.library.wicket.components.AbstractLibraryDataView;
-import com.intexsoft.library.wicket.components.panels.NavbarPanel;
-import com.intexsoft.library.wicket.components.panels.PaginationPanel;
+import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
+import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
+import com.intexsoft.library.wicket.components.panels.general.PaginationPanel;
 import com.intexsoft.library.wicket.confirms.ConfirmDeleteAuthorPage;
 import com.intexsoft.library.wicket.createpages.AddAuthorPage;
 import com.intexsoft.library.wicket.infopages.AuthorInfoPage;
@@ -33,30 +32,33 @@ public class AuthorsPage extends WebPage {
             }
         });
         add(new NavbarPanel("navbar"));
+        add(new FooterPanel("footer"));
         authors = AuthorRepository.getInstance().getAll();
-        ListDataProvider<Author> listDataProvider = new ListDataProvider<>(authors);
-        if (get("rows") != null) {
-            remove("rows");
+        DataView<?> bookDataView;
+        if (authors.isEmpty()) {
+            bookDataView = new AbstractLibraryDataView<>("rows",new ListDataProvider<>(List.of("Empty"))) {
+                @Override
+                protected ModalWindow linkForEachItem(Item<String> item) {
+                    return null;
+                }
+            };
+        } else {
+            ListDataProvider<Author> listDataProvider = new ListDataProvider<>(authors);
+            bookDataView = new AbstractLibraryDataView<>("rows", listDataProvider, AuthorInfoPage.class) {
+                @Override
+                protected ModalWindow linkForEachItem(Item<Author> item) {
+                    ModalWindow modalWindow = new ModalWindow("confirm");
+                    modalWindow.setCookieName("delete-button");
+                    modalWindow.setAutoSize(true);
+                    modalWindow.setPageCreator((ModalWindow.PageCreator) () ->
+                            new ConfirmDeleteAuthorPage(AuthorsPage.this.getPageReference(), modalWindow, item.getModelObject()));
+                    modalWindow.setWindowClosedCallback((ModalWindow.WindowClosedCallback) ajaxRequestTarget ->
+                            AuthorsPage.this.redirectToInterceptPage(new AuthorsPage()));
+                    return modalWindow;
+                }
+            };
         }
-        DataView<Author> bookDataView = new AbstractLibraryDataView<>("rows", listDataProvider, AuthorInfoPage.class) {
-            @Override
-            protected Component linkForEachItem(Item<Author> item) {
-                ModalWindow modalWindow = new ModalWindow("confirm");
-                modalWindow.setCookieName("delete-button");
-                modalWindow.setAutoSize(true);
-                modalWindow.setPageCreator((ModalWindow.PageCreator) () ->
-                        new ConfirmDeleteAuthorPage(AuthorsPage.this.getPageReference(), modalWindow, item.getModelObject()));
-                modalWindow.setWindowClosedCallback((ModalWindow.WindowClosedCallback) ajaxRequestTarget ->
-                        AuthorsPage.this.redirectToInterceptPage(new AuthorsPage()));
-                item.add(new AjaxLink<Void>("deleteButton") {
-                    @Override
-                    public void onClick(AjaxRequestTarget target) {
-                        modalWindow.show(target);
-                    }
-                });
-                return modalWindow;
-            }
-        };
+
         bookDataView.setItemsPerPage(1);
         add(bookDataView);
         add(new PaginationPanel("paginationPanel", bookDataView));

@@ -1,23 +1,23 @@
 package com.intexsoft.library.wicket.infopages;
 
 import com.intexsoft.library.database.entities.Author;
-import com.intexsoft.library.database.entities.Book;
 import com.intexsoft.library.database.repositories.AuthorRepository;
-import com.intexsoft.library.database.repositories.BookRepository;
 import com.intexsoft.library.wicket.AuthorsPage;
 import com.intexsoft.library.wicket.BooksPage;
 import com.intexsoft.library.wicket.components.AuthorForm;
-import com.intexsoft.library.wicket.components.BookForm;
+import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
+import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
+import com.intexsoft.library.wicket.components.panels.model.AuthorPanel;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 
 public class AuthorInfoPage extends WebPage {
 
     public AuthorInfoPage(Author author) {
+        add(new NavbarPanel("navbar"));
+        add(new FooterPanel("footer"));
         author = AuthorRepository.getInstance().findById(author.getId());
         if (author == null) {
             redirectToInterceptPage(new BooksPage());
@@ -28,13 +28,18 @@ public class AuthorInfoPage extends WebPage {
                 redirectToInterceptPage(new AuthorsPage());
             }
         });
-        Form<Author> bookForm = new AuthorForm("form", author) {
+        AuthorForm authorForm = new AuthorForm("form", author, "Отменить изменения") {
+            @Override
+            protected void actionOnLinkReturn() {
+                redirectToInterceptPage(new AuthorInfoPage(getModelObject()));
+            }
+
             @Override
             protected void onSubmit() {
                 AuthorRepository.getInstance().save(getModelObject());
             }
         };
         add(new Label("info", new Model<>(author)));
-        add(bookForm);
+        add(new AuthorPanel("panel", authorForm));
     }
 }

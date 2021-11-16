@@ -10,20 +10,21 @@
 <span wicket:id="navbar"></span>
 <div class="container-fluid">
     <div class="container">
+        <div class="row text-center">
+            <button wicket:id="createPublisherButton" type="button" class="btn btn-primary">Добавить нового издателя</button>
+        </div>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Publisher name</th>
-                <th scope="col">Buttons</th>
+                <th scope="col">Имя издателя</th>
+                <th scope="col">Навигация</th>
             </tr>
             </thead>
             <tbody>
             <tr wicket:id="rows">
                 <th scope="col" wicket:id="dataRow"></th>
                 <th>
-                    <div wicket:id="confirm"></div>
-                    <button type="button" class="btn btn-primary" wicket:id="showButton">Show publisher</button>
-                    <button type="button" class="btn btn-danger" wicket:id="deleteButton">Delete publisher</button>
+                    <span wicket:id="panel"></span>
                 </th>
             </tr>
             </tbody>
@@ -34,5 +35,7 @@
         </div>
     </div>
 </div>
+<footer class="text-muted" wicket:id="footer">
+</footer>
 </body>
 </html>

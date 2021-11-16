@@ -1,4 +1,4 @@
-package com.intexsoft.library.wicket.components.panels;
+package com.intexsoft.library.wicket.components.panels.general;
 
 
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;

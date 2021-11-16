@@ -1,4 +1,4 @@
-package com.intexsoft.library.wicket.components.panels;
+package com.intexsoft.library.wicket.components.panels.general;
 
 import com.intexsoft.library.wicket.AuthorsPage;
 import com.intexsoft.library.wicket.BooksPage;

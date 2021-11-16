@@ -2,29 +2,29 @@
 <html lang="en" xmlns:wicket="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Книги</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 <span wicket:id="navbar"></span>
-<button wicket:id="createBookButton" type="button" class="btn btn-primary"> Check</button>
 <div class="container-fluid">
     <div class="container">
+        <div class="row text-center">
+            <button wicket:id="createBookButton" type="button" class="btn btn-primary">Добавить новую книгу</button>
+        </div>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Book name</th>
-                <th scope="col">Buttons</th>
+                <th scope="col">Название книги</th>
+                <th scope="col">Навигация</th>
             </tr>
             </thead>
             <tbody>
             <tr wicket:id="rows">
                 <th scope="col" wicket:id="dataRow"></th>
                 <th>
-                    <div wicket:id="confirm"></div>
-                    <button type="button" class="btn btn-primary" wicket:id="showButton">Show book</button>
-                    <button type="button" class="btn btn-danger" wicket:id="deleteButton">Delete book</button>
+                    <span wicket:id="panel"></span>
                 </th>
             </tr>
             </tbody>
@@ -35,14 +35,7 @@
         </div>
     </div>
 </div>
-<footer class="text-muted">
-    <div class="container">
-        <p class="float-right">
-            <a href="#">Back to top</a>
-        </p>
-        <p>Library example. All Rights Reserved </p>
-        <p>©Pavel.Lotashinsky</p>
-    </div>
+<footer class="text-muted" wicket:id="footer">
 </footer>
 </body>
 </html>

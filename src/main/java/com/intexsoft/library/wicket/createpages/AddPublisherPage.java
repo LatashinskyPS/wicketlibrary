@@ -5,19 +5,26 @@ import com.intexsoft.library.database.entities.Publisher;
 import com.intexsoft.library.database.repositories.PublisherRepository;
 import com.intexsoft.library.wicket.PublishersPage;
 import com.intexsoft.library.wicket.components.PublisherForm;
-import com.intexsoft.library.wicket.validators.CustomNumberValidator;
+import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
+import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
+import com.intexsoft.library.wicket.components.panels.model.PublisherPanel;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.model.CompoundPropertyModel;
 
 public class AddPublisherPage extends WebPage {
     private static final long serialVersionUID = 1L;
 
     public AddPublisherPage() {
-        Form<Publisher> publisherForm = new PublisherForm("form", new Publisher()) {
+        add(new NavbarPanel("navbar"));
+        add(new FooterPanel("footer"));
+        PublisherForm publisherForm = new PublisherForm("form", new Publisher(), "Отмена") {
+            @Override
+            protected void actionOnLinkReturn() {
+                redirectToInterceptPage(new PublishersPage());
+            }
+
             @Override
             protected void onSubmit() {
                 PublisherRepository.getInstance().save((Publisher) getDefaultModelObject());
@@ -32,7 +39,7 @@ public class AddPublisherPage extends WebPage {
                 redirectToInterceptPage(new PublishersPage());
             }
         });
-        add(feedbackPanel);
-        add(publisherForm);
+        publisherForm.add(feedbackPanel);
+        add(new PublisherPanel("panel", publisherForm));
     }
 }

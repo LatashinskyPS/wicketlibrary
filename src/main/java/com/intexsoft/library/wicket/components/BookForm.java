@@ -5,17 +5,20 @@ import com.intexsoft.library.database.entities.Book;
 import com.intexsoft.library.database.entities.Publisher;
 import com.intexsoft.library.database.repositories.AuthorRepository;
 import com.intexsoft.library.database.repositories.PublisherRepository;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 
 import java.util.ArrayList;
 
-public class BookForm extends Form<Book> {
+public abstract class BookForm extends Form<Book> {
 
-    public BookForm(String id, Book book) {
+    public BookForm(String id, Book book, String nameOfButton) {
         super(id, new CompoundPropertyModel<>(book));
         book.setAuthorList(AuthorRepository.getInstance().getByBook(book));
         if (book.getAuthorList() == null) {
@@ -42,7 +45,12 @@ public class BookForm extends Form<Book> {
         authorCheckGroup.setRequired(true);
         authorCheckGroup.add(checksList);
         add(authorCheckGroup);
-
+        add(new Link<>("return") {
+            @Override
+            public void onClick() {
+                actionOnLinkReturn();
+            }
+        }.add(new Label("nameOfButton",new Model<>(nameOfButton))));
         DropDownChoice<Publisher> publisherDropDownChoice = new DropDownChoice<>("publisher");
         publisherDropDownChoice.setChoices(PublisherRepository.getInstance().getAll());
         publisherDropDownChoice.setChoiceRenderer(new ChoiceRenderer<>() {
@@ -53,5 +61,8 @@ public class BookForm extends Form<Book> {
         });
         publisherDropDownChoice.setRequired(true);
         add(publisherDropDownChoice);
+        add(new FeedbackPanel("feedback"));
     }
+
+    protected abstract void actionOnLinkReturn();
 }

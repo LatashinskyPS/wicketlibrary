@@ -24,7 +24,7 @@ public class ConfirmDeleteAuthorPage extends WebPage {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 if (pageReference != null) {
-                    ((AuthorsPage) pageReference.getPage()).getAuthors().remove(author);
+                    AuthorRepository.getInstance().delete(author);
                 }
                 modalWindow.close(target);
             }
