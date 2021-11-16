@@ -25,8 +25,8 @@ public class BookForm extends Form<Book> {
         RequiredTextField<String> nameRequiredTextField = new RequiredTextField<>("name");
         add(nameRequiredTextField);
 
-        TextField<String> descriptionTextField = new TextField<>("description");
-        add(descriptionTextField);
+        TextArea<String> stringTextArea = new TextArea<>("description");
+        add(stringTextArea);
 
         CheckGroup<Author> authorCheckGroup = new CheckGroup<>("authors");
         ListView<Author> checksList = new ListView<>("authors", AuthorRepository.getInstance().getAll()) {

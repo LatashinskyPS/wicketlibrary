@@ -27,6 +27,6 @@ public class AddBookPage extends WebPage {
         });
         add(bookForm);
         FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
-        add(feedbackPanel);
+        bookForm.add(feedbackPanel);
     }
 }

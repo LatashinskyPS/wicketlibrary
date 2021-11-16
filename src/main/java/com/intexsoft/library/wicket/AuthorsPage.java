@@ -8,23 +8,17 @@ import com.intexsoft.library.wicket.components.AbstractLibraryDataView;
 import com.intexsoft.library.wicket.components.panels.NavbarPanel;
 import com.intexsoft.library.wicket.components.panels.PaginationPanel;
 import com.intexsoft.library.wicket.confirms.ConfirmDeleteAuthorPage;
-import com.intexsoft.library.wicket.confirms.ConfirmDeleteBookPage;
 import com.intexsoft.library.wicket.createpages.AddAuthorPage;
-import com.intexsoft.library.wicket.createpages.AddBookPage;
 import com.intexsoft.library.wicket.infopages.AuthorInfoPage;
-import com.intexsoft.library.wicket.infopages.BookInfoPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.link.PopupSettings;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import java.util.List;
 
@@ -49,6 +43,7 @@ public class AuthorsPage extends WebPage {
             protected Component linkForEachItem(Item<Author> item) {
                 ModalWindow modalWindow = new ModalWindow("confirm");
                 modalWindow.setCookieName("delete-button");
+                modalWindow.setAutoSize(true);
                 modalWindow.setPageCreator((ModalWindow.PageCreator) () ->
                         new ConfirmDeleteAuthorPage(AuthorsPage.this.getPageReference(), modalWindow, item.getModelObject()));
                 modalWindow.setWindowClosedCallback((ModalWindow.WindowClosedCallback) ajaxRequestTarget ->
