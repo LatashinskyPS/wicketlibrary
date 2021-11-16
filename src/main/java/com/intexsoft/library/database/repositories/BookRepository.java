@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class BookRepository {
     private static final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
     private static final BookRepository bookRepository = new BookRepository();

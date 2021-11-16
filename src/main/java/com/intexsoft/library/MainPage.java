@@ -7,6 +7,9 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class MainPage extends WebPage {
 
+    @SpringBean
+    private BookRepository bookRepository;
+
     public MainPage() {
         add(new NavbarPanel("navbar"));
     }
