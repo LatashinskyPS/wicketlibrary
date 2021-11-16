@@ -4,8 +4,6 @@ import com.intexsoft.library.database.HibernateSessionFactory;
 import com.intexsoft.library.database.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;

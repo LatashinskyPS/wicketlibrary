@@ -10,4 +10,6 @@ public class MainPage extends WebPage {
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
     }
+
+
 }

@@ -1,15 +1,14 @@
 package com.intexsoft.library.wicket.infopages;
 
-import com.intexsoft.library.wicket.BooksPage;
 import com.intexsoft.library.database.entities.Book;
-import com.intexsoft.library.wicket.components.BookForm;
 import com.intexsoft.library.database.repositories.BookRepository;
+import com.intexsoft.library.wicket.BooksPage;
+import com.intexsoft.library.wicket.components.BookForm;
 import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
 import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
 import com.intexsoft.library.wicket.components.panels.model.BookPanel;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 

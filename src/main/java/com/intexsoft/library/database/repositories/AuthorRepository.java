@@ -5,7 +5,6 @@ import com.intexsoft.library.database.entities.Author;
 import com.intexsoft.library.database.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +67,7 @@ public class AuthorRepository {
         session.close();
         return author;
     }
+
     public void delete(Author author) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

@@ -1,11 +1,7 @@
 package com.intexsoft.library.wicket.confirms;
 
-import com.intexsoft.library.database.entities.Book;
 import com.intexsoft.library.database.entities.Publisher;
-import com.intexsoft.library.database.repositories.BookRepository;
 import com.intexsoft.library.database.repositories.PublisherRepository;
-import com.intexsoft.library.wicket.BooksPage;
-import com.intexsoft.library.wicket.PublishersPage;
 import org.apache.wicket.PageReference;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;

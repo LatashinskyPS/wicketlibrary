@@ -50,7 +50,7 @@ public abstract class BookForm extends Form<Book> {
             public void onClick() {
                 actionOnLinkReturn();
             }
-        }.add(new Label("nameOfButton",new Model<>(nameOfButton))));
+        }.add(new Label("nameOfButton", new Model<>(nameOfButton))));
         DropDownChoice<Publisher> publisherDropDownChoice = new DropDownChoice<>("publisher");
         publisherDropDownChoice.setChoices(PublisherRepository.getInstance().getAll());
         publisherDropDownChoice.setChoiceRenderer(new ChoiceRenderer<>() {

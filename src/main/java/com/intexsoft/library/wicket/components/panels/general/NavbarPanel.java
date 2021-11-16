@@ -3,9 +3,6 @@ package com.intexsoft.library.wicket.components.panels.general;
 import com.intexsoft.library.wicket.AuthorsPage;
 import com.intexsoft.library.wicket.BooksPage;
 import com.intexsoft.library.wicket.PublishersPage;
-import com.intexsoft.library.wicket.createpages.AddAuthorPage;
-import com.intexsoft.library.wicket.createpages.AddBookPage;
-import com.intexsoft.library.wicket.createpages.AddPublisherPage;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 

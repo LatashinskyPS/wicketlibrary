@@ -1,7 +1,6 @@
 package com.intexsoft.library.database.repositories;
 
 import com.intexsoft.library.database.HibernateSessionFactory;
-import com.intexsoft.library.database.entities.Book;
 import com.intexsoft.library.database.entities.Publisher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

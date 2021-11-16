@@ -1,8 +1,6 @@
 package com.intexsoft.library.wicket.components;
 
 import com.intexsoft.library.database.entities.Publisher;
-import com.intexsoft.library.database.repositories.PublisherRepository;
-import com.intexsoft.library.wicket.BooksPage;
 import com.intexsoft.library.wicket.validators.CustomNumberValidator;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -13,7 +11,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 
 public abstract class PublisherForm extends Form<Publisher> {
-    public PublisherForm(String id,Publisher publisher,String nameOfButton) {
+    public PublisherForm(String id, Publisher publisher, String nameOfButton) {
         super(id, new CompoundPropertyModel<>(publisher));
 
         RequiredTextField<String> nameRequiredTextField = new RequiredTextField<>("name");
@@ -31,7 +29,8 @@ public abstract class PublisherForm extends Form<Publisher> {
             public void onClick() {
                 actionOnLinkReturn();
             }
-        }.add(new Label("nameOfButton",new Model<>(nameOfButton))));
+        }.add(new Label("nameOfButton", new Model<>(nameOfButton))));
     }
+
     protected abstract void actionOnLinkReturn();
 }

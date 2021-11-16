@@ -24,8 +24,8 @@ public abstract class AbstractLibraryDataView<T> extends DataView<T> {
 
     public AbstractLibraryDataView(String id, IDataProvider<T> dataProvider) {
         super(id, dataProvider);
-        showPageClass =null;
-        isEmpty=true;
+        showPageClass = null;
+        isEmpty = true;
     }
 
     public AbstractLibraryDataView(String id, IDataProvider<T> dataProvider, Class<? extends Page> showPageClass) {
@@ -44,7 +44,7 @@ public abstract class AbstractLibraryDataView<T> extends DataView<T> {
     }
 
     private void createIfEmpty(Item<T> item) {
-        item.add(new RepeatingView("dataRow").add(new Label(newChildId(),new Model<>("Empty"))));
+        item.add(new RepeatingView("dataRow").add(new Label(newChildId(), new Model<>("Empty"))));
         item.add(new EmptyPanel("panel"));
     }
 
