@@ -19,7 +19,6 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import java.util.List;
 
 public class PublishersPage extends WebPage {
-    private List<Publisher> publishers;
 
     public PublishersPage() {
         add(new NavbarPanel("navbar"));
@@ -30,7 +29,7 @@ public class PublishersPage extends WebPage {
                 redirectToInterceptPage(new AddPublisherPage());
             }
         });
-        publishers = PublisherRepository.getInstance().getAll();
+        List<Publisher> publishers = PublisherRepository.getInstance().getAll();
         DataView<?> bookDataView;
         if (publishers.isEmpty()) {
             bookDataView = new AbstractLibraryDataView<>("rows", new ListDataProvider<>(List.of("Empty"))) {
@@ -54,16 +53,8 @@ public class PublishersPage extends WebPage {
                 }
             };
         }
-        bookDataView.setItemsPerPage(1);
+        bookDataView.setItemsPerPage(5);
         add(bookDataView);
         add(new PaginationPanel("paginationPanel", bookDataView));
-    }
-
-    public List<Publisher> getPublishers() {
-        return publishers;
-    }
-
-    public void setPublishers(List<Publisher> publishers) {
-        this.publishers = publishers;
     }
 }

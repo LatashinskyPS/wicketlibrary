@@ -28,7 +28,7 @@ public class AddAuthorPage extends WebPage {
             @Override
             protected void onSubmit() {
                 AuthorRepository.getInstance().save((Author) getDefaultModelObject());
-                redirectToInterceptPage(new BooksPage());
+                redirectToInterceptPage(new AuthorsPage());
             }
         };
         add(new AuthorPanel("panel", form));

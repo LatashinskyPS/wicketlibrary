@@ -26,9 +26,6 @@ import java.util.List;
 
 public class BooksPage extends WebPage {
     private static final long serialVersionUID = 1L;
-
-    private List<Book> books;
-
     public BooksPage() {
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
@@ -38,7 +35,7 @@ public class BooksPage extends WebPage {
                 redirectToInterceptPage(new AddBookPage());
             }
         });
-        books = BookRepository.getInstance().getAll();
+        List<Book> books = BookRepository.getInstance().getAll();
         if (get("rows") != null) {
             remove("rows");
         }
@@ -65,16 +62,8 @@ public class BooksPage extends WebPage {
                 }
             };
         }
-        bookDataView.setItemsPerPage(1);
+        bookDataView.setItemsPerPage(5);
         add(bookDataView);
         add(new PaginationPanel("paginationPanel", bookDataView));
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
     }
 }

@@ -28,18 +28,10 @@ public class AddPublisherPage extends WebPage {
             @Override
             protected void onSubmit() {
                 PublisherRepository.getInstance().save((Publisher) getDefaultModelObject());
-                redirectToInterceptPage(new BooksPage());
+                redirectToInterceptPage(new PublishersPage());
             }
         };
 
-        FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
-        publisherForm.add(new Link<>("return") {
-            @Override
-            public void onClick() {
-                redirectToInterceptPage(new PublishersPage());
-            }
-        });
-        publisherForm.add(feedbackPanel);
         add(new PublisherPanel("panel", publisherForm));
     }
 }

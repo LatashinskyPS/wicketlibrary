@@ -22,8 +22,6 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import java.util.List;
 
 public class AuthorsPage extends WebPage {
-    private List<Author> authors;
-
     public AuthorsPage() {
         add(new Link<>("createAuthorButton") {
             @Override
@@ -33,7 +31,7 @@ public class AuthorsPage extends WebPage {
         });
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
-        authors = AuthorRepository.getInstance().getAll();
+        List<Author> authors = AuthorRepository.getInstance().getAll();
         DataView<?> bookDataView;
         if (authors.isEmpty()) {
             bookDataView = new AbstractLibraryDataView<>("rows",new ListDataProvider<>(List.of("Empty"))) {
@@ -59,16 +57,9 @@ public class AuthorsPage extends WebPage {
             };
         }
 
-        bookDataView.setItemsPerPage(1);
+        bookDataView.setItemsPerPage(5);
         add(bookDataView);
         add(new PaginationPanel("paginationPanel", bookDataView));
     }
 
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
 }
