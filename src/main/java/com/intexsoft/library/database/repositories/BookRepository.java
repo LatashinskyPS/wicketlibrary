@@ -4,19 +4,21 @@ import com.intexsoft.library.database.HibernateSessionFactory;
 import com.intexsoft.library.database.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-public class BookRepository {
+@Component
+public class BookRepository implements Serializable {
     private static final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
-    private static final BookRepository bookRepository = new BookRepository();
 
     public BookRepository() {
     }
 
     public static BookRepository getInstance() {
-        return bookRepository;
+        return new BookRepository();
     }
 
     public Book findById(UUID uuid) {
