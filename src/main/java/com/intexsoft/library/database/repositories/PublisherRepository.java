@@ -5,11 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 @Component
-public class PublisherRepository {
+public class PublisherRepository implements Serializable {
     private final SessionFactory sessionFactory;
 
     public PublisherRepository(SessionFactory sessionFactory) {
