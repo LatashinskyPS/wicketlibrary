@@ -2,6 +2,8 @@ package com.intexsoft.library.wicket.infopages;
 
 import com.intexsoft.library.database.entities.Publisher;
 import com.intexsoft.library.database.repositories.PublisherRepository;
+import com.intexsoft.library.database.services.AuthorService;
+import com.intexsoft.library.database.services.PublisherService;
 import com.intexsoft.library.wicket.BooksPage;
 import com.intexsoft.library.wicket.PublishersPage;
 import com.intexsoft.library.wicket.components.PublisherForm;
@@ -12,12 +14,16 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class PublisherInfoPage extends WebPage {
+    @SpringBean
+    private PublisherService publisherService;
+
     public PublisherInfoPage(Publisher publisher) {
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
-        publisher = PublisherRepository.getInstance().findById(publisher.getId());
+        publisher = publisherService.findById(publisher.getId());
         if (publisher == null) {
             redirectToInterceptPage(new BooksPage());
         }
@@ -35,7 +41,7 @@ public class PublisherInfoPage extends WebPage {
 
             @Override
             protected void onSubmit() {
-                PublisherRepository.getInstance().save(getModelObject());
+                publisherService.save(getModelObject());
             }
         };
         add(new Label("info", new Model<>(publisher)));

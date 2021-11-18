@@ -2,6 +2,7 @@ package com.intexsoft.library.wicket;
 
 import com.intexsoft.library.database.entities.Author;
 import com.intexsoft.library.database.repositories.AuthorRepository;
+import com.intexsoft.library.database.services.AuthorService;
 import com.intexsoft.library.wicket.components.AbstractLibraryDataView;
 import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
 import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
@@ -15,10 +16,14 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.List;
 
 public class AuthorsPage extends WebPage {
+    @SpringBean
+    private AuthorService authorService;
+
     public AuthorsPage() {
         add(new Link<>("createAuthorButton") {
             @Override
@@ -28,7 +33,7 @@ public class AuthorsPage extends WebPage {
         });
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
-        List<Author> authors = AuthorRepository.getInstance().getAll();
+        List<Author> authors = authorService.getAll();
         DataView<?> bookDataView;
         if (authors.isEmpty()) {
             bookDataView = new AbstractLibraryDataView<>("rows", new ListDataProvider<>(List.of("Empty"))) {

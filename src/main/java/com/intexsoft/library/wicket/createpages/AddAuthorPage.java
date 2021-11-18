@@ -2,15 +2,18 @@ package com.intexsoft.library.wicket.createpages;
 
 import com.intexsoft.library.database.entities.Author;
 import com.intexsoft.library.database.repositories.AuthorRepository;
+import com.intexsoft.library.database.services.AuthorService;
 import com.intexsoft.library.wicket.AuthorsPage;
 import com.intexsoft.library.wicket.components.AuthorForm;
 import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
 import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
 import com.intexsoft.library.wicket.components.panels.model.AuthorPanel;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class AddAuthorPage extends WebPage {
-    private static final long serialVersionUID = 1L;
+    @SpringBean
+    private AuthorService authorService;
 
     public AddAuthorPage() {
         add(new NavbarPanel("navbar"));
@@ -23,7 +26,7 @@ public class AddAuthorPage extends WebPage {
 
             @Override
             protected void onSubmit() {
-                AuthorRepository.getInstance().save((Author) getDefaultModelObject());
+                authorService.save((Author) getDefaultModelObject());
                 redirectToInterceptPage(new AuthorsPage());
             }
         };

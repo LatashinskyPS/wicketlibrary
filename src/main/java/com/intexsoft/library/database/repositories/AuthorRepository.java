@@ -1,27 +1,24 @@
 package com.intexsoft.library.database.repositories;
 
-import com.intexsoft.library.database.HibernateSessionFactory;
 import com.intexsoft.library.database.entities.Author;
 import com.intexsoft.library.database.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class AuthorRepository {
-    private static final AuthorRepository authorRepository = new AuthorRepository();
+    private final SessionFactory sessionFactory;
 
-    private AuthorRepository() {
+    public AuthorRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
-
-    public static AuthorRepository getInstance() {
-        return authorRepository;
-    }
-
-    SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
 
     public void save(Author author) {
         Session session = sessionFactory.getCurrentSession();

@@ -2,6 +2,7 @@ package com.intexsoft.library.wicket.infopages;
 
 import com.intexsoft.library.database.entities.Author;
 import com.intexsoft.library.database.repositories.AuthorRepository;
+import com.intexsoft.library.database.services.AuthorService;
 import com.intexsoft.library.wicket.AuthorsPage;
 import com.intexsoft.library.wicket.BooksPage;
 import com.intexsoft.library.wicket.components.AuthorForm;
@@ -12,13 +13,16 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class AuthorInfoPage extends WebPage {
+    @SpringBean
+    private AuthorService authorService;
 
     public AuthorInfoPage(Author author) {
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
-        author = AuthorRepository.getInstance().findById(author.getId());
+        author = authorService.findById(author.getId());
         if (author == null) {
             redirectToInterceptPage(new BooksPage());
         }
@@ -36,7 +40,7 @@ public class AuthorInfoPage extends WebPage {
 
             @Override
             protected void onSubmit() {
-                AuthorRepository.getInstance().save(getModelObject());
+                authorService.save(getModelObject());
             }
         };
         add(new Label("info", new Model<>(author)));

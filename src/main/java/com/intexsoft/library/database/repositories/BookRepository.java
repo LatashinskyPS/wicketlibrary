@@ -1,6 +1,5 @@
 package com.intexsoft.library.database.repositories;
 
-import com.intexsoft.library.database.HibernateSessionFactory;
 import com.intexsoft.library.database.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,13 +11,10 @@ import java.util.UUID;
 
 @Component
 public class BookRepository implements Serializable {
-    private static final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+    private final SessionFactory sessionFactory;
 
-    public BookRepository() {
-    }
-
-    public static BookRepository getInstance() {
-        return new BookRepository();
+    public BookRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     public Book findById(UUID uuid) {

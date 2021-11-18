@@ -5,6 +5,8 @@ import com.intexsoft.library.database.entities.Book;
 import com.intexsoft.library.database.entities.Publisher;
 import com.intexsoft.library.database.repositories.AuthorRepository;
 import com.intexsoft.library.database.repositories.PublisherRepository;
+import com.intexsoft.library.database.services.AuthorService;
+import com.intexsoft.library.database.services.PublisherService;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.link.Link;
@@ -13,14 +15,19 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.ArrayList;
 
 public abstract class BookForm extends Form<Book> {
+    @SpringBean
+    private AuthorService authorService;
+    @SpringBean
+    private PublisherService publisherService;
 
     public BookForm(String id, Book book, String nameOfButton) {
         super(id, new CompoundPropertyModel<>(book));
-        book.setAuthorList(AuthorRepository.getInstance().getByBook(book));
+        book.setAuthorList(authorService.getByBook(book));
         if (book.getAuthorList() == null) {
             book.setAuthorList(new ArrayList<>());
         }
@@ -32,7 +39,7 @@ public abstract class BookForm extends Form<Book> {
         add(stringTextArea);
 
         CheckGroup<Author> authorCheckGroup = new CheckGroup<>("authors");
-        ListView<Author> checksList = new ListView<>("authors", AuthorRepository.getInstance().getAll()) {
+        ListView<Author> checksList = new ListView<>("authors", authorService.getAll()) {
             @Override
             protected void populateItem(ListItem<Author> item) {
                 Check<Author> check = new Check<>("check", item.getModel());
@@ -52,7 +59,7 @@ public abstract class BookForm extends Form<Book> {
             }
         }.add(new Label("nameOfButton", new Model<>(nameOfButton))));
         DropDownChoice<Publisher> publisherDropDownChoice = new DropDownChoice<>("publisher");
-        publisherDropDownChoice.setChoices(PublisherRepository.getInstance().getAll());
+        publisherDropDownChoice.setChoices(publisherService.getAll());
         publisherDropDownChoice.setChoiceRenderer(new ChoiceRenderer<>() {
             @Override
             public Object getDisplayValue(Publisher object) {

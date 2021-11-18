@@ -1,22 +1,19 @@
 package com.intexsoft.library.database.repositories;
 
-import com.intexsoft.library.database.HibernateSessionFactory;
 import com.intexsoft.library.database.entities.Publisher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class PublisherRepository {
-    private final SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
-    private static final PublisherRepository publisherRepository = new PublisherRepository();
+    private final SessionFactory sessionFactory;
 
-    private PublisherRepository() {
-    }
-
-    public static PublisherRepository getInstance() {
-        return publisherRepository;
+    public PublisherRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     public void save(Publisher publisher) {

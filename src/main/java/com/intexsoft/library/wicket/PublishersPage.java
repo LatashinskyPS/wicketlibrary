@@ -2,6 +2,8 @@ package com.intexsoft.library.wicket;
 
 import com.intexsoft.library.database.entities.Publisher;
 import com.intexsoft.library.database.repositories.PublisherRepository;
+import com.intexsoft.library.database.services.AuthorService;
+import com.intexsoft.library.database.services.PublisherService;
 import com.intexsoft.library.wicket.components.AbstractLibraryDataView;
 import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
 import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
@@ -15,10 +17,13 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.List;
 
 public class PublishersPage extends WebPage {
+    @SpringBean
+    private PublisherService publisherService;
 
     public PublishersPage() {
         add(new NavbarPanel("navbar"));
@@ -29,7 +34,7 @@ public class PublishersPage extends WebPage {
                 redirectToInterceptPage(new AddPublisherPage());
             }
         });
-        List<Publisher> publishers = PublisherRepository.getInstance().getAll();
+        List<Publisher> publishers = publisherService.getAll();
         DataView<?> bookDataView;
         if (publishers.isEmpty()) {
             bookDataView = new AbstractLibraryDataView<>("rows", new ListDataProvider<>(List.of("Empty"))) {

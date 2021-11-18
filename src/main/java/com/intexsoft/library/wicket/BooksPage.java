@@ -1,7 +1,7 @@
 package com.intexsoft.library.wicket;
 
 import com.intexsoft.library.database.entities.Book;
-import com.intexsoft.library.database.repositories.BookRepository;
+import com.intexsoft.library.database.services.BookService;
 import com.intexsoft.library.wicket.components.AbstractLibraryDataView;
 import com.intexsoft.library.wicket.components.panels.general.FooterPanel;
 import com.intexsoft.library.wicket.components.panels.general.NavbarPanel;
@@ -15,11 +15,13 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.List;
 
 public class BooksPage extends WebPage {
-    private static final long serialVersionUID = 1L;
+    @SpringBean
+    private BookService bookService;
 
     public BooksPage() {
         add(new NavbarPanel("navbar"));
@@ -30,7 +32,7 @@ public class BooksPage extends WebPage {
                 redirectToInterceptPage(new AddBookPage());
             }
         });
-        List<Book> books = BookRepository.getInstance().getAll();
+        List<Book> books = bookService.getAll();
         if (get("rows") != null) {
             remove("rows");
         }

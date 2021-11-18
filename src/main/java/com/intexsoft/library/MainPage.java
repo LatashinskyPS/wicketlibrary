@@ -12,6 +12,7 @@ public class MainPage extends WebPage {
     private BookRepository bookRepository;
 
     public MainPage() {
+        bookRepository.getAll();
         add(new NavbarPanel("navbar"));
         add(new FooterPanel("footer"));
     }

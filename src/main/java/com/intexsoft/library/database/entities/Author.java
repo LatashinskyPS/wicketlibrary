@@ -55,7 +55,8 @@ public class Author implements Serializable {
 
     @Override
     public String toString() {
-        return name + " " + surname;
+        return name + " " + surname +
+                ". Годы жизни:" + dateBorn + "-" + (dateDeath == null ? "жив" : dateDeath.toString());
     }
 
     public UUID getId() {
